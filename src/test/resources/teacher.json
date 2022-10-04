@@ -1,0 +1,11 @@
+{
+  "name": "Elena",
+  "secondName": "Kalugina",
+  "age": 26,
+  "isEmployee": true,
+  "organization": {
+    "id": 1234567
+    "title": "VTB",
+    "createdDate": 12.12.2022
+  }
+}

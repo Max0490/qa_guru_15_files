@@ -1,0 +1,9 @@
+{
+  "name": "Dmitrii",
+  "age": 33,
+  "isGoodTeacher": true,
+  "passport": {
+    "number": 123456,
+    "issueDate": 12.12.2022
+  }
+}
