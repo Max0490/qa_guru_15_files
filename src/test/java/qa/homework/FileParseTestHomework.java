@@ -5,6 +5,7 @@ import com.codeborne.xlstest.XLS;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.opencsv.CSVReader;
+import guru.qa.model.Employee;
 import guru.qa.model.Teacher;
 import org.junit.jupiter.api.Test;
 
@@ -24,6 +25,17 @@ public class FileParseTestHomework {
     ClassLoader cl = FileParseTestHomework.class.getClassLoader();
 
     @Test
+    void jsonTestWithModel() {
+        InputStream is = cl.getResourceAsStream("employee.json");
+        Gson gson = new Gson();
+        Employee employee = gson.fromJson(new InputStreamReader(is), Employee.class);
+        assertThat(Employee.name).isEqualTo("Elena");
+        assertThat(Employee.isEmployee).isTrue();
+        assertThat(Employee.organization.title).isEqualTo("VTB");
+    }
+
+
+        @Test
     void pdfTest() throws Exception {
         open("https://junit.org/junit5/docs/current/user-guide/");
         File dowloadFile = $("a[href*='junit-user-guide-5.9.1.pdf']").download();
@@ -73,15 +85,5 @@ public class FileParseTestHomework {
         assertThat(jsonObject.get("name").getAsString()).isEqualTo("Dmitrii");
         assertThat(jsonObject.get("isGoodTeacher").getAsBoolean()).isTrue();
         assertThat(jsonObject.get("passport").getAsJsonObject().get("number").getAsInt()).isEqualTo(123456);
-    }
-
-    @Test
-    void jsonTestWithModel() {
-        InputStream is = cl.getResourceAsStream("employee.json");
-        Gson gson = new Gson();
-        Teacher teacher = gson.fromJson(new InputStreamReader(is), Teacher.class);
-        assertThat(teacher.name).isEqualTo("Dmitrii");
-        assertThat(teacher.isGoodTeacher).isTrue();
-        assertThat(teacher.passport.number).isEqualTo(123456);
     }
 }

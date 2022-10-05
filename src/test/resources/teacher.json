@@ -1,11 +1,9 @@
 {
-  "name": "Elena",
-  "secondName": "Kalugina",
-  "age": 26,
-  "isEmployee": true,
-  "organization": {
-    "id": 1234567
-    "title": "VTB",
-    "createdDate": 12.12.2022
+  "name": "Dmitrii",
+  "age": 33,
+  "isActive": true,
+  "passport": {
+    "number": 123456,
+    "issueDate": 12.12.2022
   }
 }
