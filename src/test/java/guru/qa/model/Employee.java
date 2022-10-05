@@ -3,11 +3,11 @@ package guru.qa.model;
 import java.util.List;
 
 public class Employee {
-    public String name;
+    public static String name;
     public String secondName;
     public int age;
-    public boolean isEmployee;
-    public Organization organization;
+    public static boolean isEmployee;
+    public static Organization organization;
 
     public static class Organization {
         public int id;
