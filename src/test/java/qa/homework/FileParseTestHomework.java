@@ -6,6 +6,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 import com.opencsv.CSVReader;
 import guru.qa.model.Employee;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
@@ -41,6 +42,9 @@ public class FileParseTestHomework {
         ZipInputStream zis = new ZipInputStream(is);
         ZipEntry entry;
         while ((entry = zis.getNextEntry()) != null) {
+            Assertions.assertThat(entry.getName()).isEqualTo("Example_xlsxl.xlsx");
+            Assertions.assertThat(entry.getName()).isEqualTo("Example_pdf.pdf");
+            Assertions.assertThat(entry.getName()).isEqualTo("Example_csv.csv");
             String entryName = entry.getName();
         }
     }
