@@ -32,58 +32,17 @@ public class FileParseTestHomework {
         assertThat(Employee.name).isEqualTo("Elena");
         assertThat(Employee.isEmployee).isTrue();
         assertThat(Employee.organization.title).isEqualTo("VTB");
-    }
-
-
-        @Test
-    void pdfTest() throws Exception {
-        open("https://junit.org/junit5/docs/current/user-guide/");
-        File dowloadFile = $("a[href*='junit-user-guide-5.9.1.pdf']").download();
-        PDF pdf = new PDF(dowloadFile);
-        assertThat(pdf.text).contains("Sam Brannen");
-    }
-
-    @Test
-    void xlsTest() throws Exception {
-        InputStream is = cl.getResourceAsStream("sample-xlsx-file.xlsx");
-        XLS xls = new XLS(is);
-        assertThat(
-                xls.excel.getSheetAt(0)
-                        .getRow(1)
-                        .getCell(1)
-                        .getStringCellValue()
-        ).isEqualTo("Dulce");
-    }
-
-    @Test
-    void csvTest() throws Exception {
-        try (InputStream is = cl.getResourceAsStream("qa_guru.csv");
-             CSVReader reader = new CSVReader(new InputStreamReader(is))) {
-            List<String[]> content = reader.readAll();
-            String[] row = content.get(1);
-            assertThat(row[0]).isEqualTo("Tuchs");
-            assertThat(row[1]).isEqualTo("JUnit 5");
-        }
+        assertThat(Employee.organization.id).isEqualTo("1234567");
     }
 
     @Test
     void zipTest() throws Exception {
         Class<Object> cl;
-        InputStream is = cl.getResourceAsStream("sample-zip-file.zip");
+        InputStream is = cl.getResourceAsStream("ZIIPP.zip");
         ZipInputStream zis = new ZipInputStream(is);
         ZipEntry entry;
         while ((entry = zis.getNextEntry()) != null) {
             String entryName = entry.getName();
         }
-    }
-
-    @Test
-    void jsonTest() {
-        InputStream is = cl.getResourceAsStream("teacher.json");
-        Gson gson = new Gson();
-        JsonObject jsonObject = gson.fromJson(new InputStreamReader(is), JsonObject.class);
-        assertThat(jsonObject.get("name").getAsString()).isEqualTo("Dmitrii");
-        assertThat(jsonObject.get("isGoodTeacher").getAsBoolean()).isTrue();
-        assertThat(jsonObject.get("passport").getAsJsonObject().get("number").getAsInt()).isEqualTo(123456);
     }
 }
